@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="501.0" prefWidth="769.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="by.varyvoda.lemer.HelloController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="71.0" prefWidth="770.0" spacing="10.0">
+         <children>
+            <AnchorPane HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="aField" layoutX="3.0" promptText="a" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Slider fx:id="aSlider" layoutX="3.0" layoutY="25.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="rField" layoutX="3.0" promptText="R0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Slider fx:id="rSlider" layoutX="3.0" layoutY="25.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="mField" layoutX="3.0" promptText="m" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Slider fx:id="mSlider" layoutX="3.0" layoutY="25.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="314.0" prefWidth="770.0" style="-fx-border-color: #AAA; -fx-border-width: 1 0;">
+         <children>
+            <StackPane>
+               <children>
+                  <BarChart fx:id="chart" prefHeight="140.0" prefWidth="749.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <ProgressIndicator fx:id="chartProgress" prefHeight="41.0" prefWidth="53.0" progress="0.35" />
+               </children>
+            </StackPane>
+         </children>
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+      </HBox>
+      <VBox prefHeight="124.0" prefWidth="770.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <StackPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="m">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="mathField" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator fx:id="mathProgress" maxHeight="24.0" maxWidth="24.0" prefHeight="24.0" prefWidth="24.0" progress="0.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="D">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="dField" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator fx:id="dProgress" maxHeight="24.0" maxWidth="24.0" prefHeight="24.0" prefWidth="24.0" progress="0.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="σ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="sigmaField" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator fx:id="sigmaProgress" maxHeight="24.0" maxWidth="24.0" prefHeight="24.0" prefWidth="24.0" progress="0.0" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <StackPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="P">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="pField" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator fx:id="pProgress" maxHeight="24.0" maxWidth="24.0" prefHeight="24.0" prefWidth="24.0" progress="0.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="L">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="lField" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator fx:id="lProgress" maxHeight="24.0" maxWidth="24.0" prefHeight="24.0" prefWidth="24.0" progress="0.0" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
