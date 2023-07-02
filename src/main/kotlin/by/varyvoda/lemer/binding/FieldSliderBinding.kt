@@ -2,10 +2,8 @@ package by.varyvoda.lemer.binding
 
 import javafx.beans.property.IntegerProperty
 import javafx.beans.property.SimpleIntegerProperty
-import javafx.event.EventHandler
 import javafx.scene.control.Slider
 import javafx.scene.control.TextField
-import javafx.scene.input.KeyCode
 
 class FieldSliderBinding(
     private val field: TextField,
@@ -20,54 +18,39 @@ class FieldSliderBinding(
         set(value) = valueProperty.set(value)
 
     init {
+        slider.min = min.toDouble()
+        slider.max = max.toDouble()
+
         valueProperty.addListener { _, _, new ->
             field.text = new.toString()
         }
-        slider.onMouseReleased = EventHandler {
-            field.text = slider.value.toString()
-            update()
-        }
-        slider.min = min.toDouble()
-        slider.max = max.toDouble()
-        field.focusedProperty().addListener { _, _, focused ->
-            if (!focused) {
-                updateFromText()
+        field.textProperty().addListener { _, _, text ->
+            try {
+                val value = text.toDouble()
+                if (value < min) {
+                    field.text = min.toString()
+                    return@addListener
+                }
+                if (value > max) {
+                    field.text = max.toString()
+                    return@addListener
+                }
+                slider.value = value
+                valueProperty.set(value.toInt())
+            } catch (e: NumberFormatException) {
+                field.text = slider.value.toInt().toString()
             }
         }
-        field.onKeyPressed = EventHandler {
-            if (it.code == KeyCode.ENTER) {
-                updateFromText()
-            }
+        slider.valueProperty().addListener { _, _, value ->
+            this.value = value.toInt()
         }
+
         slider.value = min.toDouble()
         field.text = min.toString()
-        update()
     }
 
     fun valueProperty(): IntegerProperty {
         return valueProperty
-    }
-
-    private fun update() {
-        valueProperty.set(slider.value.toInt())
-    }
-
-    private fun updateFromText() {
-        try {
-            val value = field.text.toDouble()
-            if (value < min) {
-                field.text = min.toString()
-                return
-            }
-            if (value > max) {
-                field.text = max.toString()
-                return
-            }
-            slider.value = value
-            valueProperty.set(value.toInt())
-        } catch (e: NumberFormatException) {
-            field.text = slider.value.toInt().toString()
-        }
     }
 
     fun random() {

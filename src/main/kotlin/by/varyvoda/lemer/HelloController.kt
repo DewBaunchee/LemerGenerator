@@ -131,7 +131,7 @@ class HelloController {
         calculation?.cancel(true)
         allInProgress()
         calculation = CompletableFuture.runAsync {
-            val n = 50_000
+            val n = generator.m
             val values = generator.batch(n)
             try {
                 val minMax = values.stream().mapToDouble { it }.summaryStatistics()
@@ -157,7 +157,7 @@ class HelloController {
                 var intervalStart = sortedValues.first()
                 var currentInterval = mutableListOf<Double>()
                 val intervals = mutableListOf<List<Double>>()
-                maths.forEach {
+                sortedValues.forEach {
                     if (it < intervalStart + intervalLength) {
                         currentInterval.add(it)
                     } else {
@@ -185,7 +185,7 @@ class HelloController {
 
                             return@map XYChart.Data(
                                 "${toFixed2.format(fromX)} - ${toFixed2.format(toX)}",
-                                c
+                                interval.size.toDouble()
                             )
                         }
                         .toList()
